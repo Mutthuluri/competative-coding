@@ -1,0 +1,35 @@
+class Stack:
+  def __inti__(self,capacity):
+    self.value =[]
+    self.capacity = capacity
+  def push(self,item):
+    if not self.is_full():
+      return self.value.append(item)
+    else:
+      print("Stack is full can't push data anymore")
+  def pop(self):
+    if not self.is_empty():
+      return self.value.pop()
+    else:
+      print("Stack is empty\nYou can't enter the value")
+  def.is_empty(self):
+    return len(self.value) == 0
+  def.is_full(self):
+    return len(self.value) == self.capacity
+  
+stack_capacity = int(input("Enter the capacity of stack"))
+stack = Stack(stack_capacity)
+
+  
+
+key = int(input("Enter the 1 to push\n Enter the 2 to pop \nEnter the 3 to show stack"))
+match key:
+  case 1:
+    push(int(input()))
+  case 2:
+    pop(int(input()))
+  case 3:
+    for i in range(value):
+  case _:
+    print("Invalid input")
+    
