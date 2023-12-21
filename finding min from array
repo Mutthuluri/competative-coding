@@ -1,0 +1,23 @@
+int main()
+{
+  int n;
+  printf("Enter the size of the array");
+  scanf("%d",&n);
+  int kumar[n];
+  printf("Enter the elements of the array");
+  for(int i=0;i<n;i++)
+  {
+    scanf("%d",&kumar[i]);
+  }
+  int length = sizeof(kumar)/sizeof(kumar[0]);
+  int min = kumar[0];
+  for(int v=0;v<length;v++)
+  {
+    if(kumar[v]<min)
+    {
+      min=kumar[v];
+    }
+  }
+  printf("The minimum element is %d",min);
+  
+}
