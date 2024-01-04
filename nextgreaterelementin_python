@@ -1,0 +1,27 @@
+def find_next_large_element(arr):
+    for i in range(len(arr)):
+        next_big_elem = -1
+        for j in range(i + 1, len(arr)):
+            if arr[i] < arr[j]:
+                next_big_elem = arr[j]
+                break
+        print(f"Next bigger element of {arr[i]} in the array is: {next_big_elem}")
+
+def form_big_elem_array(arr):
+    result = []
+    for i in range(len(arr)):
+        next_big_elem = -1
+        for j in range(i + 1, len(arr)):
+            if arr[i] < arr[j]:
+                next_big_elem = arr[j]
+                break
+        result.append(next_big_elem)
+    print(result)
+
+if __name__ == "__main__":
+    arr1 = [7, 3, 10, 8, 6, 18]
+    print("The given array is:", arr1)
+    print("\nNext bigger elements are:")
+    find_next_large_element(arr1)
+    print("\nNext bigger elements Array:")
+    form_big_elem_array(arr1)
