@@ -1,0 +1,56 @@
+class Kumar:
+    def __init__(self, capacity):
+        self.items = []
+        self.capacity = capacity
+
+    def push(self, item):
+        if not self.is_full():
+            return self.items.append(item)
+        else:
+            print("Stack is full")
+
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            print("Stack is empty")
+
+    def show(self):
+        if self.is_empty():
+            print( "Stack is empty\nInsert some values")
+        else:
+            print(self.items)
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def is_full(self):
+        return len(self.items) == self.capacity
+
+    def size(self):
+        return len(self.items)
+
+    def peek(self):
+        if self.is_empty():
+            print("Stack is Empty")
+        else:
+            print(self.items[-1])
+kumar = Kumar(5)
+while True:
+    value = int(input("Emter the \n1.To push\n 2.To pop\n 3.To get top element\n 4.To print the stack\n 5.To exit\n"))
+    if value == 1:
+        data = input("Enter the data to be pushed into the stack\n")
+        kumar.push(data)
+    elif value == 2:
+        kumar.pop()
+    elif value == 3:
+        print("Now you are seeing the top element\n")
+        kumar.peek()
+    elif value == 4:
+        print("Now you are seeing the final stack\n")
+        kumar.show()
+    elif value == 5:
+        print("Now you are going to exit from the loop\n")
+        break
+    else:
+        print("Invalid input \n")
