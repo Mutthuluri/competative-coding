@@ -1,0 +1,60 @@
+N = 5
+cq = [0] * N
+front = -1
+rear = -1
+
+def enqueue(item):
+    global front, rear
+    if isFull():
+        print("Queue Overflow")
+        exit(1)
+    if front == -1:
+        front = 0
+    rear = (rear + 1) % N
+    cq[rear] = item
+
+def dequeue():
+    global front, rear
+    if isEmpty():
+        print("Queue Underflow")
+        exit(1)
+    deleted_item = cq[front]
+    if front == rear:
+        front = -1
+        rear = -1
+    else:
+        front = (front + 1) % N
+    return deleted_item
+
+def isEmpty():
+    return 1 if front == -1 else 0
+
+def isFull():
+    return 1 if (rear + 1) % N == front else 0
+
+def display():
+    i = front
+    if isEmpty():
+        print("Queue Underflow.")
+        return
+    if front < rear:
+        while i <= rear:
+            print(cq[i], end=", ")
+            i += 1
+    else:
+        while i != rear:
+            print(cq[i], end=", ")
+            i = (i + 1) % N
+        print(cq[i], end=", ")
+
+
+enqueue(11)
+enqueue(22)
+enqueue(33)
+enqueue(44)
+enqueue(55)
+display()
+print("\nDeleted Element is:", dequeue())
+print("Deleted Element is:", dequeue())
+enqueue(66)
+display()
