@@ -1,0 +1,28 @@
+def infix_to_postfix(expression):
+    opers = []
+    output = []
+    operators = {'+': 1, '-': 1, '*': 2, '/': 2}
+
+    for char in expression:
+        if char.isalnum():
+            output.append(char)
+        elif char == '(':
+            opers.append(char)
+        elif char == ')':
+            while opers and opers[-1] != '(':
+                output.append(opers.pop())
+            opers.pop()  
+        elif char in operators:
+            while opers and operators.get(char, 0) <= operators.get(opers[-1], 0):
+                output.append(opers.pop())
+            opers.append(char)
+
+    while opers:
+        output.append(opers.pop())
+
+    postfix_expression = ''.join(output)
+    print("postfix expression is",postfix_expression)
+
+
+infix_expression = input("Enter an infix expression: ")
+infix_to_postfix(infix_expression)
