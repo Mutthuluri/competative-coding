@@ -1,0 +1,52 @@
+class PriorityQueueNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class PriorityQueue:
+    def __init__(self):
+        self.front = None
+
+def create_priority_queue():
+    return PriorityQueue()
+
+def is_empty(priority_queue):
+    return priority_queue.front is None
+
+def insert(priority_queue, data):
+    new_node = PriorityQueueNode(data)
+    if is_empty(priority_queue):
+        priority_queue.front = new_node
+    else:
+        if data > priority_queue.front.data:
+            new_node.next = priority_queue.front
+            priority_queue.front = new_node
+        else:
+            current = priority_queue.front
+            while current.next is not None and current.next.data > data:
+                current = current.next
+            new_node.next = current.next
+            current.next = new_node
+
+def remove_max(priority_queue):
+    if is_empty(priority_queue):
+        return -1
+    temp = priority_queue.front
+    max_value = temp.data
+    priority_queue.front = priority_queue.front.next
+    del temp
+    return max_value
+
+def find_product_of_three_largest_distinct_elements(arr):
+    priority_queue = create_priority_queue()
+    for num in arr:
+        insert(priority_queue, num)
+    max1 = remove_max(priority_queue)
+    max2 = remove_max(priority_queue)
+    max3 = remove_max(priority_queue)
+    return max1 * max2 * max3
+
+n = int(input("Enter the size of the array: "))
+arr = list(map(int, input("Enter the array elements:\n").split()))
+product = find_product_of_three_largest_distinct_elements(arr)
+print("Product of the three largest distinct elements:", product)
